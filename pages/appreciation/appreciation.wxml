@@ -1,16 +1,37 @@
 <view class="container">
-  <view class="header">
-    <image src="/images/OIP.jpeg" mode="aspectFit" class="circle-image" />
-  </view>
-  <button bindtap="uploadImage" class="upload-button">上传图片</button>
-  <view class="input-group">
-    <input type="text" placeholder="输入价格" class="price-input"/>
-    <button class="submit-button">提交</button>
-  </view>
-  <!-- <view class="history">
-    <block wx:for="{{imageList}}" wx:key="*this">
-      <image src="{{item.url}}" mode="aspectFit"/>
-      <text>价格: {{item.price}}</text>
+  <view class="image-grid">
+    <block wx:for="{{imageList}}" wx:key="index">
+      <view class="image-item">
+        <image src="{{item}}" mode="aspectFill" bindtap="previewImage" data-index="{{index}}"></image>
+        <view class="delete-btn" bindtap="deleteImage" data-index="{{index}}">×</view>
+      </view>
     </block>
-  </view> -->
+    <view class="image-item upload-item" bindtap="chooseImage" wx:if="{{imageList.length < 9}}">
+      <view class="upload-icon">+</view>
+    </view>
+  </view>
+  
+  <view class="category-section">
+    <view class="category-title">选择分类：</view>
+    <view class="category-options">
+      <view class="category-item {{selectedCategory === '和田玉' ? 'active' : ''}}" 
+            bindtap="selectCategory" 
+            data-category="和田玉">和田玉</view>
+      <view class="category-item {{selectedCategory === '翡翠' ? 'active' : ''}}" 
+            bindtap="selectCategory" 
+            data-category="翡翠">翡翠</view>
+    </view>
+  </view>
+
+  <view class="input-section">
+    <input class="name-input" type="text" placeholder="请输入宝贝名称" bindinput="onNameChange" value="{{name}}" />
+  </view>
+  <view class="remark-section">
+    <textarea class="remark-input" placeholder="请输入备注信息" bindinput="onRemarkChange" value="{{remark}}"></textarea>
+  </view>
+  <button class="submit-btn" bindtap="submit">提交估价</button>
+  <view class="bottom-note">
+    <view>1. 请尽量提供清晰的图片最多支持9张，以便我们更好地评估商品。</view>
+    <view>2. 估价结果仅供参考，实际价格可能会因商品本身或市场情况而有所不同。</view>
+  </view>
 </view>
