@@ -31,15 +31,24 @@ Page({
       count: remainCount,
       mediaType: ['image'],
       sourceType: ['album', 'camera'],
-      success(res) {
+      async success(res) {
         const tempFiles = res.tempFiles;
-        const newImageList = that.data.imageList.concat(tempFiles.map(file => file.tempFilePath));
-        that.setData({
-          imageList: newImageList
-        });
-        tempFiles.forEach(file => {
-          this.uploadFile(file.tempFilePath);
-        });
+      // 上传所有图片
+      const uploadTasks = tempFiles.map(async (image) => {
+        // 如果图片已经是网络地址，则直接返回
+        if (image.startsWith('http')) {
+          return image;
+        }
+
+        // 上传本地图片
+        return await this.uploadFile(image);
+      });
+
+      const imageUrls = await Promise.all(uploadTasks);
+      const newImageList = that.data.imageList.concat(imageUrls);
+      that.setData({
+        imageList: newImageList
+      });
       }
     });
   },
