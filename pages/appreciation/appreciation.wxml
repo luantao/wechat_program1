@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="header">
+    <image src="/images/OIP.jpeg" mode="aspectFit" class="circle-image" />
+  </view>
+  <button bindtap="uploadImage" class="upload-button">上传图片</button>
+  <view class="input-group">
+    <input type="text" placeholder="输入价格" class="price-input"/>
+    <button class="submit-button">提交</button>
+  </view>
+  <!-- <view class="history">
+    <block wx:for="{{imageList}}" wx:key="*this">
+      <image src="{{item.url}}" mode="aspectFit"/>
+      <text>价格: {{item.price}}</text>
+    </block>
+  </view> -->
+</view>

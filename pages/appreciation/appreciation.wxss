@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 20px;
+}
+button {
+
+}
+.history {
+  display: flex;
+  flex-direction: column;
+}
+.image-display {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+}
+.circle-image {
+  max-width: 50%;
+  max-height: 50%;
+  border-radius: 50%;
+  border: 2rpx solid #ccc;
+  box-shadow: 0 0 100rpx rgba(144, 238, 144, 0.5);
+  display: block;
+  margin: 0 auto;
+}
+image {
+  margin-bottom: 10rpx;
+}
+text {
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.header {
+  margin-bottom: 20px;
+}
+.upload-button {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+}
+.price-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 10px;
+  height: 40px;
+  flex-grow: 1;
+}
+.submit-button {
+  padding: 5px 10px;
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
